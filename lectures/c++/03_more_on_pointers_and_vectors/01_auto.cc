@@ -1,7 +1,7 @@
 #include <cmath>
 #include <iostream>
 
-#if __cplusplus > 201103L
+#if __cplusplus > 201103L    // string for c++ 11
 
 template <class T>
 auto init(const std::size_t l) {
@@ -12,10 +12,14 @@ auto init(const std::size_t l) {
 
 template <class T>
 T* init(const std::size_t l) {
-  return new T[l]{};
+  return new T[l]{};      // {} means inizialization to 0 
 }
 
 #endif
+
+//template <class T>
+//void debug(T);
+
 
 int main() {
   auto b = true;          // a bool
@@ -29,8 +33,10 @@ int main() {
   for (auto i = 0; i < 7; ++i)
     std::cout << i << std::endl;
 
-  auto pb = &b;  // guess what.. How can I know?
+  auto pb = &b;  // guess what.. How can I know? Pointer to a boolean
 
+  //debug(pb);
+  
   auto ps = init<double>(11);
   delete[] ps;
   return 0;

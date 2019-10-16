@@ -1,77 +1,68 @@
-# Exercises - session 01
+# Advanced Programming [![Build Status](https://api.travis-ci.org/asartori86/advanced_programming_2019-20.svg?branch=master)](https://travis-ci.org/asartori86/advanced_programming_2019-20)
 
-## Understanding compiler messages
-- Take a simple program (e.g., the hello world one) and put one at a time the following errors. Compile it and try to understand the error messages. If you have both `g++` and `clang++` compare the messages from the two compilers.
-  - do not put the `main` function
-  - typos in function name (e.g., `c0ut`)
-  - typos in variable name
-  - forget to put `;`
-  - forget to `#include <iostream>`
-  - declare a variable with illegal name like `int double {0};`
+[SISSA webpage](http://www.math.sissa.it/course/phd-course-master-course/advanced-programming-1)
+
+The course aims to provide advanced knowledge of both theoretical and practical programming in C++11 and Python3, with particular regard to the principles of object-oriented programming and best practices of software development.
+
+Syllabus:
+
+- Introduction to C++11. You will learn the logic and the basics of C++11, the built-in data types and how to effectively use them. Best practices in programming will be addressed.
+- Object orientation in C++11. The principles of Object-Oriented programming will be presented with particular attention to their implementations in C++11. Some of the most important Design Patterns will be discussed.
+- Advanced features of C++14/17. Some of the new features of standard C++/14/17 will be introduced and explained.
+- Python3. After a recap of the basics of Python3, you will learn how to program in object-oriented fashion in the Python3 programming language.
+- How to combine the two languages. Several methods to combine the two languages will be presented.
 
 
-## uniq
-- Write a simple version of the Unix program `uniq -c`, which, when fed with a text, outputs the same text with **consecutive** identical lines collapsed to one prepended with the number of repetitions
+## Prerequisites
+- Familiarity with linux terminal and a text editor (e.g., emacs, vim)
+- A bit of knowledge of git is helpful
 
-*Hints*: you can scan the stdin as follows
-```
-std::string line;
-while(std::getline(std::cin,line))
-{...}
-```
-or
-```
-for(std::string line; std::getline(std::cin,line);)
-{...}
-```
-What do you think it is better? Why?
+## References
 
-Remember that if you type directly from stdin, you should press `Ctr+D` to close the stdin without interrupting the program. Moreover, you can redirect the content of a text to stdin trough the `<` operator
-```
-./a.out <a_file
-```
+- Programming: Principles and Practice using C++ (Second Edition),
+  Bjarne Stroustrup, Addison-Wesley 2014, ISBN 978-0-321-99278-9
 
-You can compare strings with the `==` operator
-```
-std::string s1;
-std::string s2;
-...
-if(s1 == s2)
-if(s1 != s2)
-```
+ - The C++ Programming Language, Bjarne Stroustrup, Addison-Wesley
+   2013, ISBN 978-0321563842
 
-## Getters
-- write a function `get_int` that reads from stdin until a valid number is fed
-- write a function `get_double` that reads from stdin until a valid number is fed.
+## Locations
+- Lecture room is 128-129 in the main SISSA building in via Bonomea 265.
+- On Nov 19, 2019  Dec 12, 2019 the lectures will be held in room 128-129, main SISSA building in via Bonomea 265.
 
-*Hints*: 
-You can keep reading from stdin using one of two statements
-```
-while(std::cin >> i)
-```
-or
-```
-while(!(std::cin >> i))
-```
-what is the difference?
+## How to get the material
+### Non-experienced git users
+- Very first time `(N==0)`
+  - open a terminal
+  - `cd` in a suitable folder
+  - `git clone https://github.com/asartori86/advanced_programming_2019-20.git`
+  - `cd advanced-programming_2019-20`
+  - take a look at [software carpentry lecture](http://swcarpentry.github.io/git-novice/) and [pro git book](https://git-scm.com/book/en/v2) 
+- `N > 0`
+  - open a terminal
+  - `cd` to the folder `advanced-programming_2019-20`
+  - `git pull --rebase origin master`
+- if(conflict)
+  - ask
 
-After a wrong input you have to clear the error flag from `std::cin`  calling
-```
-std::cin.clear();
-```
-and ignore what just read
-```
-std::cin.ignore();
-```
-
-## Units of measure
-
-- Write a code that reads a number with its proper unit of measure, and prints back that number according to the SI units, e.g.
-
-```
-1 inch
-0.0254 m
-```
-
-## **Optional**: Text formatter
-- Write a simple text formatter that breaks the lines longer than a given number of characters. This formatter does not break words and leaves unmodified the lines shorter than the given threshold.
+### Experienced git users
+- Very first time `(N==0)`
+  - fork the repository
+  - clone either your fork or this repository
+  - add the other remote
+- `N >= 0`
+  - use branches
+  - rebase on the correct master branch
+  - merge the branches in your local master
+  - push on the master of your fork
+- if(conflict)
+  - if(rebase)
+    - `git add`
+    - `git rebase --continue`
+    - if(bigger mess)
+      	- `git rebase --abort`
+  - if(merge)
+    - `git add`
+    - `git commit`
+    - `git merge --continue`
+    - if(bigger mess)
+      - `git merge --abort`

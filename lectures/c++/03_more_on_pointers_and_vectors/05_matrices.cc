@@ -1,7 +1,7 @@
 #include <iomanip>
 #include <iostream>
 
-void print_ma(int m[][5], int dim1);  // ugly and not flexible
+void print_ma(int m[][5], int dim1);  // ugly and not flexible..... Size of column should be known in compile time (?!)
 // void print_ma(int m[][], int dim1, int dim2); // error second
 // dimension must be
 // knwon at compile time
@@ -9,7 +9,7 @@ void print_ma(int m[][5], int dim1);  // ugly and not flexible
 void print_ma(int* p, int row, int col);  // the only possible solution
 
 int main() {
-  int ma[6][5];  // matrix: 6 rows, 5 columns each
+  int ma[6][5];  // matrix: 6 rows, 5 columns each. Storedin memory as a long array of 30 elements.
 
   for (int i = 0; i < 6; ++i)
     for (int j = 0; j < 5; ++j)
@@ -27,15 +27,14 @@ int main() {
     std::cout << std::endl;
   }
 
-  // int *pma {ma}; 		// error
-  // int *pma[5] {ma};		// error
-  int* p{reinterpret_cast<int*>(ma)};
-  // int* p {&ma[0][0]};
+  // int *pma = ma; 		// error
+  // int *pma[5] = ma;		// error
+  int* p = &ma[0][0];
 
   // print_ma(ma, 6, 5); 	// error
   print_ma(p, 6, 5);
 
-  auto d_ma = new int[6 * 5]{};
+  int* d_ma = new int[6 * 5]{};
 
   std::cout << std::endl;
 

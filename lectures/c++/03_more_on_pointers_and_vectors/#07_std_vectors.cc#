@@ -28,13 +28,13 @@ int main() {
     std::cout << "v[" << i << "] = " << v1[i] << std::endl;
 
   std::cout << v1[3] << " " << v1[78] << std::endl;        // no bounds checking
-  std::cout << v1.at(3) << " " << v1.at(78) << std::endl;  // bounds checking
+  std::cout << v1.at(3) << " " << v1.at(78) << std::endl;  // bounds checking with vector.at(index_to_check) at runtime.
 
   return 0;
 }
 
 template <typename T>
-void print_vector(const std::vector<T>& v, const std::string& s) {
+void print_vector(const std::vector<T>& v, const std::string& s) {   //vector can be passed by reference
   std::cout << s << ": ";
   for (const auto& x : v)
     std::cout << x << " ";

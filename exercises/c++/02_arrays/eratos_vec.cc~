@@ -1,0 +1,32 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+
+int main(){
+  unsigned int n;
+  std::cout << "Insert a value: \n";
+  std::cin >> n;
+  std::vector<bool> primes;
+
+    std::cout << "1";
+    
+  for(unsigned int i = 0; i <= n; i++){
+    primes.push_back(true);}
+
+  std::cout << 1;
+  
+  for(unsigned int i = 0; i <= std::sqrt(n); i++){
+    if(primes[i]){
+      for(unsigned j = i*i; j <= n; j = (j+i)){
+	primes[j] = false;}
+	}
+      }
+  std::cout << "Primes smaller than " << n << ": \n";
+  
+  for(unsigned int i = 2; i<= n; i++){
+    if(primes[i]){
+      std::cout << i << std::endl;}
+  }
+  
+
+  return 0;}

@@ -11,18 +11,18 @@ int main() {
 
   char** ppc;
 
-  int* ap[7];
+  int* ap[7];            //array where each element is a pointer to integer
 
-  void* pv{pi};
+  void* pv{pi};          //pointer to void inizialazed from pointer to something (int)       
   // *pv; // we cannot dereference void*
-  // ++pv; // we cannot increment. Why?
-  int* pi2{static_cast<int*>(pv)};
+  // ++pv; // we cannot increment. Why? Beacuse u don't know the type, so the size of every element and the jumps to do
+  int* pi2{static_cast<int*>(pv)};  //from void point to int point. static_cast performed at compile time
 
   pv = ppc;
   pv = ap;
   pv = pi;
 
-  pi = nullptr;
+  pi = nullptr;         //points to nothing
   ppc = nullptr;
   // ap = nullptr;  // error, why?
   ap[0] = nullptr;
@@ -41,11 +41,11 @@ int main() {
     std::cout << "pi is not nullptr and I can dereference it " << *pi
               << std::endl;
 
-  if (pi)
+  if (pi)                // pi = (pi != nullpointer) cause it returns 0 (false)
     std::cout << "pi is not nullptr and I can dereference it " << *pi
               << std::endl;
 
-  if (pi == nullptr)
+  if (pi == nullptr)   
     std::cout << "pi is nullptr and I CANNOT dereference it \n";
 
   if (!pi)
@@ -62,12 +62,12 @@ int main() {
   else
     std::cout << "different\n";
 
-  int (*fp)(const char*);
+  int (*fp)(const char*);        //defines a pointer to function that take const char* as input e return an int. Parenthesis are mandatory
   fp = func1;
 
   fp("hello");
 
-  fp = &func2;
+  fp = &func2;                   //same operation of last comment, but different syntax
   fp("world");
 
   // fp = func3; // error: wrong signature
@@ -75,7 +75,7 @@ int main() {
 
   xx("auto");
 
-  decltype(&func3) x = func3;
+  decltype(&func3) x = func3;    //similiar to auto. Define variable x of type (&func3) pointer to function. Like {void (*x) (const char *) = func3}
   x("decltype");
 
   return 0;

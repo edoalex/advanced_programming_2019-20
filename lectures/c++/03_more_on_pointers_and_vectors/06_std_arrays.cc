@@ -1,4 +1,4 @@
-#include <array>
+#include <array>            // size of an array must be known at compile time and then it can't be changed
 #include <iostream>
 
 // template <class T, std::size_t N>
@@ -27,7 +27,7 @@ int main() {
     std::cout << x << " ";
   std::cout << std::endl;
 
-  for (auto& x : a)
+  for (auto& x : a)         //if I want to modify the element i must use the reference (auto&)
     x *= 10;
 
   for (auto i = 0u; i < a.size(); ++i)
