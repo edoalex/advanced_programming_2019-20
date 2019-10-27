@@ -13,11 +13,13 @@ class Vector {
   ~Vector() { delete[] elem; }
 
   // try to remove the const and recompile
+  // this const mean that the state of the object will not be changed if I run this function
+  
   std::size_t size() const { return _size; }
 
   num& operator[](const std::size_t i) { return elem[i]; }
 
-  // try to comment this line and recompile
+  // try to comment this line and recompile... the compiler will complain for the const difference 
   const num& operator[](const std::size_t i) const { return elem[i]; }
 };
 

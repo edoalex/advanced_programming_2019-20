@@ -33,6 +33,6 @@ template <typename T>
 void print_sentinel(const T* a, const std::size_t l) {
   const T* const end{a + l};    //end{a+l} will point to the element afte the last element of the array
   
-  for (; a != end; ++a)         // i can cange a (pointer), i can't cange value of a
+  for (; a != end; ++a)         // i can change a (pointer), i can't change value of a
     std::cout << *a << std::endl;
 }

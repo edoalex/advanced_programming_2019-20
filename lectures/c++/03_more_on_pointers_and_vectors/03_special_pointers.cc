@@ -10,8 +10,9 @@ int main() {
   int* pi{&a};
 
   char** ppc;
-
+  
   int* ap[7];            //array where each element is a pointer to integer
+  
 
   void* pv{pi};          //pointer to void inizialazed from pointer to something (int)       
   // *pv; // we cannot dereference void*
@@ -24,7 +25,7 @@ int main() {
 
   pi = nullptr;         //points to nothing
   ppc = nullptr;
-  // ap = nullptr;  // error, why?
+  // ap = nullptr;  // error, why? cause it's an array of pointers, not a pointer
   ap[0] = nullptr;
   int** bbb;
   bbb = ap;

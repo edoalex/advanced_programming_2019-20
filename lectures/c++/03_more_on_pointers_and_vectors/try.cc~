@@ -1,0 +1,12 @@
+#include <iostream>
+#include <string>
+
+int main(){
+  int* a[4]{1,2,3,4};
+  const int* const end{a};
+
+  std::cout << end << std::endl;
+  std::cout << *end zz std::endl;
+
+
+  return 0;}

@@ -23,6 +23,8 @@ int main() {
   return 0;
 }
 
+// if u wanna define functions outside teh namespace, I gotta use the namespace::  notation
+
 void choose_a_name::nested::hello1() {
   std::cout << "hello1 from nested\n"
             << "variable is " << choose_a_name::variable << std::endl;
