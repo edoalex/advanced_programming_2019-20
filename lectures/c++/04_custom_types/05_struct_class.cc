@@ -42,15 +42,15 @@ int main() {
   p->x = 0.0;       // arrow syntax
   p->print();
 
-  auto& pr = ps;
+  auto& pr = ps;   // reference to a class
   ++pr.x;
   pr.print();
 
-  Point_s array_of_structs[8];  // built-in array
+  Point_s array_of_structs[8];  // built-in array of a structure
   array_of_structs[0].x = 1;
   array_of_structs[0].y = 2;
 
-  std::array<Point_s, 5> as;
+  std::array<Point_s, 5> as;    // standard array of a structure
   as[3].x = 3;
 
   std::vector<Point_s> vs;

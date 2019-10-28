@@ -1,6 +1,6 @@
 #include <iostream>             // types are an implementation of a concept, I may have different types for the same concept
 
-enum color { red, yellow, green };   // enum: a way to define a type
+enum color { red, yellow, green };   // enum: box to avoid "magic numbers" (similiar to dict)
 // enum color{red=0, yellow=1, green=2}; // equivalent
 
 void dwim(const color c) {

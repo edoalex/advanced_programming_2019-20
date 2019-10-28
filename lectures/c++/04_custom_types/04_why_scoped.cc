@@ -12,7 +12,7 @@ using namespace std;
 
 int main() {
   cout << nov << endl;
-  // cout << dec << endl;
+  // cout << dec << endl;  // this would raise an error, cause dec is intended as std::dec, not as month::dec !
 
   return 0;
 }
