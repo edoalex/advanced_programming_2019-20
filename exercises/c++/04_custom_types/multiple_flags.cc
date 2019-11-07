@@ -10,12 +10,12 @@ enum class flags : unsigned int {
   flag5 = 16,  // imply flag3
 
   // useful combinations
-  comb1 = flag1 | flag2,
-  comb2 = flag1 | flag3,
-  comb3 = comb1 | flag3,
+  comb1 = flag1 | flag2,   // 3
+  comb2 = flag1 | flag3,   // 5
+  comb3 = comb1 | flag3,   // 7
 };
 
-void do_complicated_stuff(flags flags);
+void do_complicated_stuff(flags flags);nt | int
 
 flags operator|(const flags f1, const flags f2);
 
@@ -63,10 +63,10 @@ flags& operator|=(flags& f1, const flags f2) {
 }
 
 void compute_multiple_flags(flags& f) {
-  if (f & flags::flag4)
-    f |= (flags::flag1 | flags::flag2);
-  if (f & flags::flag5)
-    f |= flags::flag3;
+  if (f & flags::flag4)   // (f & 8) true only when they have at least one bit in common
+    f |= (flags::flag1 | flags::flag2); // f |= 3
+  if (f & flags::flag5)   // (f & 16)
+    f |= flags::flag3;                  // f |= 4 
 }
 
 void do_complicated_stuff(flags flags) {
