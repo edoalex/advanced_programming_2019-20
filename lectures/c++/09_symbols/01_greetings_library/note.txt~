@@ -1,0 +1,7 @@
+Given the src file, if you compile it you obtain the object file, if you link one or more objet file, you obtain the binary; if the binary has a main, it's an executable, otherwise it's a library
+Compilation is the longer process between the two, but it can be done in parallel with a makefile (not in the command line)
+
+c++ -c src/greetings.cc -I include -I another_folder_with_header -fPIC
+PIC = position independent code
+
+c++ greetings.o conclusion.o -shared -o libgreetings.so

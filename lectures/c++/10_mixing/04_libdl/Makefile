@@ -16,4 +16,4 @@ clean:
 format: hello.c main.c
 	@clang-format -i $^ 2>/dev/null || echo "Please install clang-format to run this commands"
 
-
+# This folder has been skipped for now

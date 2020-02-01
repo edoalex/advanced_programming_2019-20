@@ -1,5 +1,7 @@
 #include <iostream>
-#include <memory>
+#include <memory>  // std::unique_ptr
+
+// smart pointers (std::unique_tpr):  implementation of the concept of "ownership"
 
 template <typename T>
 class Vector {
@@ -25,7 +27,9 @@ class Vector {
 
 int main() {
   Vector<double> v1{7};
-  // Vector<double> v2{v1}; // default copy ctor calls a deleted function by
-  // std::unique_ptr
+  // Vector<double> v2{v1}; // error compiling: default copy ctor calls 
+  // a deleted function by std::unique_ptr
+  // ... so, unique_ptr prevents from entangled vectors but doesn't solve the
+  // problem just like this.. z see next program
   return 0;
 }

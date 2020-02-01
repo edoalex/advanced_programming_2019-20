@@ -17,12 +17,12 @@ struct instrumented_base {
     equality,
     comparison
   };
-
+  //only bad thing about static variables: they must be defined once in the cpp file
   static constexpr std::size_t n_ops = 9;
   static double counts[n_ops];
   static const char* counter_names[n_ops];
   static void initialize(std::size_t i) {
-    std::fill(counts, counts + n_ops, 0.0);
+    std::fill(counts, counts + n_ops, 0.0); //I must reset all the counters that I registered so far (when starting a new n)
     counts[n] = i;
   }
   static void print_summary();
@@ -30,14 +30,14 @@ struct instrumented_base {
 };
 
 template <typename T>
-// T is Semiregualr or Regular or TotallyOrdered
+// T is Semiregular or Regular or TotallyOrdered
 struct instrumented : instrumented_base {
   using base = instrumented_base;
   typedef T value_type;
   T value;
   // Conversions from T and to T:
   instrumented(const T& x) : value(x) {}
-  explicit operator T() const { return value; }
+  explicit operator T() const { return value; } //this lets you construct an instrumented integer from an int, like we do in int{v[i]} +....
 
   template <typename U>
   instrumented(const instrumented<U>& x) : value(x.value) {}

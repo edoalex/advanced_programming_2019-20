@@ -9,5 +9,5 @@ struct A {
 };
 
 // A::A() { std::cout << "A ctor\n"; } // why not?
-
+//not the same forfunctions! that's why I can't use this
 #endif

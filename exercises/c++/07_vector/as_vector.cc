@@ -105,7 +105,7 @@ std::ostream& operator<<(std::ostream& os, const std::vector<T>& x) {
 
 struct Date {
   int d, m, y;
-  Date() { std::cout << "default ctor" << std::endl; }
+  Date() { std::cout << "default ctor date" << std::endl; }
   Date(int d, int m, int y) : d{d}, m{m}, y{y} {}
 };
 
@@ -115,8 +115,8 @@ std::ostream& operator<<(std::ostream& os, const Date& x) {
 }
 
 int main() {
-  // Vector<Date> v;
-  std::vector<Date> v;
+  Vector<Date> v;
+  //std::vector<Date> v;
   std::cout << v << std::endl;
   Date x{1, 2, 3};
   v.push_back(x);  // const T&

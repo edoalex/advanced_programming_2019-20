@@ -1,6 +1,10 @@
 #include <cmath>
 #include <iostream>
 
+// to advise the user about the type of the error, exceptions exist
+// in the program, Negative_number{} and Bigger_than_expected{} are execptions
+// they gotta be thrown from the function and catched from main
+
 // implment a square root function that "deals with" negative
 // numbers. Moreover according to the logic of the program, d should
 // never be greater than 50
@@ -38,7 +42,7 @@ int main() {
 double square_root(const double d) {
   // test the pre-conditions
   if (d < 0)
-    throw Negative_number{};
+    throw Negative_number{};         // default constructor {}
   if (d > 50)
     throw Bigger_than_expected{};
   return std::sqrt(d);

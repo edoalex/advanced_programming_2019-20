@@ -1,0 +1,260 @@
+Note: if you want to print:
+start from the left node
+go right; if you can't, go up and then right, but left as soon as possible
+normally, if you can't go left, write it
+
+Template:
+it will be written like
+template <typename kt, typename vt, typename cmp>
+class bst{
+	cmp op; // writing this you will have, if you want to write something like if(k1<k2) you will write if(op(k1,k2))
+	//clearly, if you want to write something like if(k1>k2, you will have to write if(op(k2,k1)))
+	//for k1<=k2 you write !op(k1,k2)
+	//for k1>=k2 you write !op(k2,k1)
+	// for k1==k2 you write !op(k1,k2) && !op(k2,k1)
+	public:
+	bst(cmp x): op{x}{} //so at least write a constructor that lets you pass a value to op DO THIS!!!!
+	//YOU CAN SPECIFY A DEFAULT VALUE FOR THIS CMP
+	as 
+	template <typename kt, typename vt, typename cmp = std::less<kt>> //std::less is templated for the keys!! (The only things that we will compare)
+
+
+
+}
+
+
+the less struct is written like
+template <typename T>
+struct less{
+	boll operator()(const T&x, const T&y){
+	return x<y;
+	}
+};
+//DON'T DO MORE THINGS THAT ASKED!! YOU WILL ONLY PUT MORE BUGS
+
+
+
+
+let's say we create a tree like this
+bst<int, int> t;
+t.insert({1,3});
+this is equivalent to
+t.insert(std::pair<kt,vt>{1,3});
+the compiler just write the precedent line for us instead of the t.insert({1,3});
+also, we can say
+t.emplace(5,4);
+
+clear() IS NOT THE DESCTRUCTOR, IT JUST FREES THE MEMORY
+
+DIFFERENCE IS WHEN YOU DEREFERENCE AN ITERATOR OR A CONST ITERATOR SEARCH
+
+Find
+you know it returns something when the iteretor returned is different from end()
+
+Balance example: print in order;
+clear a tree;
+start constructing a new tree;
+EX:
+1 3 4 6 7 8 9 10 13 14
+SELECT 7
+1 3 4 6 WILL GO LEFT OF 7
+8 9 10 13 14 WILL GO RIGHT OF 7;
+ITERATE
+
+with operator []:
+you have to insert a new value and you don't have it:
+you will use the default constructor of vt:
+insert({x, vt{}});
+
+put-to:
+otherwise you could not write just bst& but you would have to specify all the templates
+
+ERASE FUNCTION VERY IMPORTANT
+Don't delete whatever is under the node!! Just rearrange the tree; for example:
+	3
+1		4
+			6
+If you erase 3 you have to obtain
+	4
+1		6
+try not to call here the balance function; a mess with casagrande
+
+
+Expect to see 3 classes:
+bst
+iterator
+a class node
+
+NOTE:
+the struct node must not have two members like
+Struct Node{
+	key_t k;
+	value_t v;
+}
+instead: it will be like this:(of course add templates)
+
+Struct Node{
+	std::pair<    > element;
+}
+
+Add templates like this:
+template <typename T>
+Struct Node{
+	T value;
+}
+But oyu asked to use std::pair!! of course, you can just write in the bst class the 
+
+Note: if two [classes] has different templates it makes no sense to put one into the other
+
+class bst{
+	cmp op; // writing this you will have, if you want to write something like if(k1<k2) you will write if(op(k1,k2))
+	//clearly, if you want to write something like if(k1>k2, you will have to write if(op(k2,k1)))
+	//for k1<=k2 you write !op(k1,k2)
+	//for k1>=k2 you write !op(k2,k1)
+	// for k1==k2 you write !op(k1,k2) && !op(k2,k1)
+	public:
+	bst(cmp x): op{x}{} //so at least write a constructor that lets you pass a value to op DO THIS!!!!
+	//USING:
+	using node_type = Node<std::pair<const kt, vt>>;
+
+
+
+	//YOU CAN SPECIFY A DEFAULT VALUE FOR THIS CMP
+	as 
+	template <typename kt, typename vt, typename cmp = std::less<kt>> //std::less is templated for the keys!! (The only things that we will compare)
+
+
+
+}
+
+also add the two pointers to the struct node (choose the type of pointers)
+
+also, you will need another pointer to go to the parent (of course this is the only pointer that an't be unique)
+a parent will have unique pointer to the children or a shared pointer?? unique!! the child only has one parent; you don't have shared ownership on the child!
+the pointer to the father can be a raw pointer
+Note: parent of the root: nullptr
+
+Iterators outside of the class! Because we have different templates (how many? 1; what is it? the node_type) if i dupliate the ode as iterator and const iterator
+what are the members of an iterator? it's a generalized pointer: has a pointer to what is pointing to and 
+What sould the iterator point to? (A node??)
+
+class iterator:
+
+template<typename node_t>
+class iterator{
+	node_t * current;
+	public:
+
+	using value_type 
+	using reference = value_type&;
+	using pointer = value_type*;
+	using iterator_category
+	using difference_type = std::prtdiff_t;
+
+	reference operator*()const{
+
+	}
+
+
+
+
+
+}
+
+what do i want when i dereference an iterator? wewant only a reference to the member value of the strut node; so in the class node we write 
+using value_type=T;
+just after 
+Node* parent, after the left,right;
+
+so it will be in the class iterator:
+using value_type = typename node_t::value_type;
+and so we should write in
+ reference operator*()const{
+ 	return bho
+ }
+
+And what if you are going to write a onst iterator? almost the same, copy and paste; but you have to change 
+it will return a const reference when it will be dereferenced
+so will be:
+using value_type = const typename node_t::value_type;
+
+and what if we want to write only one lass? write a templated iterator; we ahieve this if we add another template to the iterator:
+
+template<typename node_t, typename T>
+class _iterator{
+	node_t * current;
+	public:
+
+	using value_type = T;
+	using reference = value_type&;
+	using pointer = value_type*;
+	using iterator_category
+	using difference_type = std::prtdiff_t;
+
+	reference operator*()const{
+
+	}
+
+
+
+
+
+}
+
+and will add in the class bst using
+using iterator = _iterator<node_type, typename node_type::value_type>
+using const_iterator=_iterator<node_type, const [maybe typename] node_type::value_type>
+
+so insert will return an [inside the class bst!!!]
+std::pair<iterator, bool> insert(const kt&); where iterator is the alias in line 205
+};
+if you want to implement it outside the class, do this (and this is why one template is better than two)
+template <typename kt, typename vt, typename cmp>
+std::pair<iterator,bool> IS WRONG!! ITERATOR IS DEFINED INSIDE OF THE CLASS BST
+So if you want to use this iterator you have to write
+std::pair<typename bst<kt,vt,cmp>::iterator, bool> bst<kt, vt, cmp>::insert(const kt& x){
+	//now there is no need to repeat everything; for example now you can write
+	new node_type // that is the node_type of line 206
+
+}
+
+//now it's ok;
+
+NOTE: put templates in header files;
+use something at the beginning like:
+#ifndef __bst_hpp
+#define __bst_hpp
+
+#endif
+
+or even in
+bst.hpp
+#ifndef __bst_hpp
+#define __bst_hpp
+
+template<.....>
+class bst{
+	
+	....
+
+};
+
+#endif
+
+
+here instead you can put the implementations outside of the class
+bits_bst.hpp
+#ifndef __bb___
+#define __bb___
+#include "bst.hpp"
+
+insert ....
+
+#endif
+and add in bst.hpp 
+#include "bits_bst.hpp"
+in the end
+
+PUT IN THE RIGHT PLACE:
+When u dereference an iterator u get a reference (of pair (k, v)) 
+When u dereference a const iterator u get a const reference that can only be read

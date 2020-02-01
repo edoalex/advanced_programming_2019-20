@@ -3,11 +3,11 @@
 unsigned int factorial(unsigned int n) {
   unsigned int ret{1};
   while (n > 1) {
-    ret *= n;
-    --n;
-
-    // or simply
-    // ret *= n--;
+    // ret *= n;
+    //--n;
+    // that, shortly written, is
+    
+    ret *= n--;
   }
   return ret;
 }

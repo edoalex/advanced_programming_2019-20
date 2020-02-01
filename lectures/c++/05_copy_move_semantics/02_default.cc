@@ -4,13 +4,13 @@
 struct S {
   int a;
   double b;
-  std::string s;  // default ctor of string set s to empty string
+  std::string s; // default ctor of string set s to empty string
 };
 
 int main() {
   S s1;  // calls default constructor
 
-  S s2{1, 2.3, "alberto"};  // if there are no custom ctors I can
+  S s2{1, 2.3, "alberto"};  // if there are no custom ctors I can      custom ctor = ctor that I know (I wrote) 
                             // directly initialize the members. Note
                             // that I need access (i.e. they must be
                             // public)
@@ -25,3 +25,11 @@ int main() {
 
   return 0;
 }
+
+// with S s1;   values are randomly inizialized
+// with S s1{}; values are inizialized to a default behaviour
+// in every cases, if the type is not built-in, but custom type, it has a default value of initialization
+// even with   S s1;
+// default value of int and double: 0
+// default value of std::string: ""
+// def. and rand. value of char: ' '?

@@ -14,11 +14,12 @@ int main() {
   // for (double d = 0.1; d != 1.0; d += 0.1)
   //   std::cout << d << std::endl;
 
-  // std::cout << std::setprecision(50);
-  // double d = 0;
-  // for (int i = 0; i < 10; ++i) {
-  //   d += 0.1;
-  //   std::cout << d << std::endl;
-  // }
+  /* std::cout << std::setprecision(50);
+   double d = 0;
+   for (int i = 0; i < 10; ++i) {
+     d += 0.1;
+     std::cout << d << std::endl;
+  }
+  */
   return 0;
 }

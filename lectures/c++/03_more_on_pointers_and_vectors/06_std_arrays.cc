@@ -33,7 +33,7 @@ int main() {
   for (auto i = 0u; i < a.size(); ++i)
     std::cout << "a[" << i << "] = " << a[i] << std::endl;
 
-  b.at(90);  // bound checking at run-time
+  b.at(90);  // bound checking at run-time (if correct, nothing, otherwise error and core aborted)
 
   return 0;
 }

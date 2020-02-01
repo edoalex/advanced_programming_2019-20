@@ -11,5 +11,7 @@ struct bar : public foo {
 
 int main() {
   bar b;
-  b.f(33);
+  b.f(33);      // it calls bar function! (if 8 line is commented)
 }
+// message: overloading doesn't work with inheritance
+// try to comment the 8 line and see difference

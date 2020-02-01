@@ -2,7 +2,7 @@
 #include <iostream>
 #include <string>
 
-// implment a square root function that "deals with" negative
+// implement a square root function that "deals with" negative
 // numbers. Moreover according to the logic of the program, d should
 // never be greater than 50
 double square_root(const double d);
@@ -21,8 +21,8 @@ int main() {
     std::cout << "square root of " << number << " is " << d << '\n';
     return 0;
   } catch (const Square_root_invalid& s) {
-    std::cerr << s.message << std::endl;
-    return 1;
+    std::cerr << s.message << std::endl;         // in the previous program, what's wrong was in the main, it was written by user
+    return 1;                                    // now it's in the function, the developer wrote it through s.message
   } catch (...) {
     std::cerr << "Unknown exception. Aborting.\n";
     return 3;

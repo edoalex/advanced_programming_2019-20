@@ -8,13 +8,15 @@ dso.hello()
 
 
 ## strings
+# u gotta specify the list of arg types and the only return type
 dso.repeat.argtypes = [c_char_p]
 dso.repeat.restype = c_int
-res = dso.repeat(b"ctypes are great") # use b to pass read-only variable
+res = dso.repeat(b"ctypes are great") # use b to pass read-only variable (gives only the bytes actually)
 
 # use create_string_buffer for a "mutable string"
 buf = create_string_buffer(b"this could be modified")
 dso.repeat(buf)
+# now, inside C function repeat, I could modify the string
 
 
 ## arrays
@@ -46,6 +48,7 @@ dso.use_by_value(param) # default is by value
 param.i=77
 param.name=b"ciao ciao"
 
+# from the following 3 lines, use or 1 and 2, ore just 3
 # dso.use_by_reference.argtypes = [POINTER(data)]
 # dso.use_by_reference(param)
 dso.use_by_reference(byref(param))

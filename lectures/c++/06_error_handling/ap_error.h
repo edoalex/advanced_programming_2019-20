@@ -158,16 +158,14 @@ namespace internal {
 
 // trick to simulate the overloading of macro AP_ASSERT depending on the number
 // of arguments
-#define SELECT_MACRO(_1, _2, NAME, ...) NAME
+#define SELECT_MACRO(_1, _2, NAME, ...) NAME                                     // SELECT_MACRO together with AP_ERROR allows macro overloading
 
 // when the condition is not satisfied, an exception is thrown
 
-#define AP_ERROR(...)                                                          \
-  SELECT_MACRO(__VA_ARGS__, _AP_ERROR2, _AP_ERROR1, dummy)(__VA_ARGS__)
+#define AP_ERROR(...)  SELECT_MACRO(__VA_ARGS__, _AP_ERROR2, _AP_ERROR1, dummy)(__VA_ARGS__)
 
-#define _AP_ERROR2(cond, exception_type)                                       \
-  if (!(cond))                                                                 \
-  ::internal::AssertHelper<exception_type>{} =                                 \
+#define _AP_ERROR2(cond, exception_type)  if (!(cond))                         \
+    ::internal::AssertHelper<exception_type>{} =                               \
       internal::MessageHandler{}                                               \
       << "\n\n"                                                                \
       << "------------------------------------------------------------------"  \
@@ -184,7 +182,7 @@ namespace internal {
 #define AP_ASSERT(...)                                                         \
   SELECT_MACRO(__VA_ARGS__, _AP_ASSERT2, _AP_ASSERT1, dummy)(__VA_ARGS__)
 
-#ifndef NDEBUG
+#ifndef NDEBUG                                                                   // if NDEGUB is not defined: assert calls error
 #  define _AP_ASSERT_(cond, exception_type) AP_ERROR(cond, exception_type)
 #else
 #  define _AP_ASSERT_(cond, exception_type)                                    \

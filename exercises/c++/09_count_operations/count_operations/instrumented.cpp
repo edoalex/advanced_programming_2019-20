@@ -22,7 +22,7 @@ void instrumented_base::print_summary() {
   const std::size_t n = counts[0];
   std::cout << std::setw(space) << double{counts[0]} << s;
   for (std::size_t i = 1; i < n_ops; ++i)
-    std::cout << std::setw(space) << double{counts[i]} << s;
+    std::cout << std::setw(space) << double{counts[i]/n} << s; // we divide by n so we can see how many instructions are done for every ...
 
   std::cout << std::endl;
 }

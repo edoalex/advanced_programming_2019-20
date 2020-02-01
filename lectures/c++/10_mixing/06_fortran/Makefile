@@ -28,3 +28,7 @@ clean:
 
 format: c-main.c cpp-main.cpp
 	@clang-format -i $^ 2>/dev/null || echo "Please install clang-format to run this commands"
+
+
+# if yoy want to use Fortran functions, u gotta call them in C/C++ with a trailing underscore (ex sum_abs_)
+# moreover, in Fortran function arguments are always pointers (put pointers everywhere)! Remember this when writing C/C++ part of the code

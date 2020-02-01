@@ -1,6 +1,8 @@
 #include <ap_error.h>
 #include <iostream>
 
+// we use classes to keep things private
+
 class Animal {
   unsigned int age;
   double weight;
@@ -56,7 +58,7 @@ class NonDangerousSnake : public Snake {
 
 struct Python : public NonDangerousSnake {};
 
-using Anaconda = DangerousSnake;
+using Anaconda = DangerousSnake;     // using is like typedef: here it's defining an alias. everytime there's anaconda I read Dangerou..
 
 void print_animal(const Animal& a) noexcept {
   std::cout << "throught ref\n";
@@ -72,7 +74,7 @@ int main() {
 
     std::cout << std::endl;
 
-    // Animal* p = new DangerousSnake{1, 2.3};
+    // Animal* p = new DangerousSnake{1, 2.3};       // these 2 lines are the same!
     Animal* p = new Anaconda{1, 2.3};
 
     std::cout << "through pointer\n";

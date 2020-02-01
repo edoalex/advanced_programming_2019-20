@@ -25,7 +25,7 @@ int main() {
     std::cerr << e.message << std::endl;
     return 2;
   } catch (const std::exception& e) {
-    std::cerr << e.what() << std::endl;
+    std::cerr << e.what() << std::endl;      // e.what() will print what happened, where e is a std::exception
     return 1;
   } catch (...) {
     std::cerr << "Unknown exception. Aborting.\n";
@@ -35,20 +35,19 @@ int main() {
 
 double square_root(const double d) {
   // test the pre-conditions
-
-  AP_ERROR(d >= 0 && d <= 50, Square_root_invalid)
+ 
+  AP_ERROR(d >= 0 && d <= 50, Square_root_invalid)           // macro(condition, type_of_exception)
       << "In our library the argument must be positive and less or equal than "
-         "50.\n";
+      "50.\n";
 
-  // AP_ERROR(d >= 0 && d <= 50) << "In our library the argument must be
-  // positive "
+  //  AP_ERROR(d >= 0 && d <= 50) << "In our library the argument must be \
+   positive "
   //                                "and less or equal than 50.\n";
 
   // AP_ERROR_GE(d, 0) << "Cannot handle negative numbers.\n";
 
-  // AP_ERROR_LE(d, 50) << "According to the implemented algorithm, the argument
-  // "
-  //                       "must be less than 50.\n";
+  //   AP_ERROR_LE(d, 50) << "According to the implemented algorithm, the argument "
+  //                      "must be less than 50.\n";
 
   // AP_ERROR_IN_RANGE(d,0,50);
 

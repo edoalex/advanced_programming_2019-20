@@ -10,8 +10,9 @@ struct Animal {
   }
 
   Animal() : Animal{0, 0} {}  // delegating constructor
-
-  virtual void speak() const = 0;  // pure virtual function ==> abstract class
+  // virtual allows children functions to ... (do what in the previous progr I couldn't do)
+  virtual void speak() const = 0;  // pure virtual function ==> abstract class (if I've written =0)
+  // when inherit I inherit data and interfaces: a function pure virtual can't be called (if I inerith virtual function, gotta use polymorphism)
   virtual void info() const noexcept {
     std::cout << "age:\t" << age << '\n' << "weight:\t" << weight << '\n';
   }
@@ -19,8 +20,9 @@ struct Animal {
   virtual ~Animal() {}  // why? see file 03_virtual_destructor.cc
 };
 
-struct Dog : public Animal {
-  void speak() const noexcept override { std::cout << "Bau\n"; }
+struct Dog : public Animal {                       // if I used virtual in the parent, I gotta use override in the child one
+  void speak() const noexcept override { std::cout << "Bau\n"; }      // "overload": same func name, different args (not the case here)
+                                                                      // override makes the compiler check if there's the virtual func in the parent
   Dog() = default;
   Dog(const unsigned int a, const double d) : Animal{a, d} {}
 };
@@ -69,3 +71,10 @@ int main() {
     return 1;
   }
 }
+
+// also an empty class occupies memory: sizeof(emp_class) returns 0
+// but if I add a virtual to a func it's 8.. y?
+// virtual table: when executing, the compiler executes until that call, a pointer takes it
+// to the virtual table (funcs not enlined) that cointsins the copies of the function for all the derived classes
+// if interested in hpc, u don't want to call a function that is called many times "virtual"
+// u don't want jumps from the compiler in memory, cause it requires the creation of a pointer (to come back from memory)

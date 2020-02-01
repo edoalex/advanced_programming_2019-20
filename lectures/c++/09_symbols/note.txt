@@ -1,0 +1,54 @@
+Given the src file, if you compile it you obtain the object file, if you link one or more objet file, you obtain the binary; if the binary has a main, it's an executable, otherwise it's a library
+Compilation is the longer proess between the two, but it can be done in parallel with a makefile (not in the command line)
+
+c++ -c src/greetings.cc -I include -I another_folder_with_header -fPIC
+PIC = position independent code
+
+c++ greetings.o conclusion.o -shared -o libgreetings.so
+
+Makefile:
+target: dep1 dep2 dep3
+	action1
+	action2
+
+by convention $@ is the name of the target, $^ is the name of all the dependencies
+
+$(CXX) -fpic -D$(LANG) -o $@ -c $< -Iinclude
+
+$< is the first dependency; when you use % the file to be compiled is $<; take it as a rule
+
+all: libgreetings.so is a prerequisite. It's the only rule executed, but in practice it executes all the ones that are needed to obtain libgreetings.so (and checks if it's up to date before executing it)
+
+src/greetings.o: include/greetings.h
+in this way you say to the makefile that it has to generate again greetings.o if greetings.h is changed (of course)
+
+order of commands (apart from the first one) doesn't matter
+
+.PHONY you execute the following target independently of the fact that it is already present or not
+
+if you don't want makefile to echo the command (like in c++....) you put a @ before the command
+
+make -B force  recompilation
+make -j number_of_processors+1	execute  in parallel
+make -n prints the actions but don't execute them
+
+
+
+need to export the LD_LIBRARY_PATH to run the executable, otherwise he can't find the shared library in this way:
+export LD_LIBRARY_PATH=../01_greetings_library:$LD_LIBRARY_PATH
+
+
+
+
+IMPORTANT NOTE:
+when installing something
+when you execute ./configure always do:
+
+./configure --prefix=/path/to/smart/place
+usually
+./configure --prefix=/opt/firefox-numberofversion
+
+LDFLAGS = -lgreetings -L $(GDIR) -Wl,-rpath,$(GDIR)
+WITH -Wl,-rpath,$(GDIR) you avoid having to specify LD_LIBRARY_PATH every time yoou have to execute an executable
+you an see something in 
+readelf -d name_of_executable | less
