@@ -11,7 +11,7 @@ class Vector {
 
   ~Vector() { delete[] elem; }
 
-  const T& operator[](const std::size_t& i) const { return elem[i]; } // const here means that it doesn't changes members of the class
+  const T& operator[](const std::size_t& i) const { return elem[i]; } // third const here means that it doesn't changes members of the class
   T& operator[](const std::size_t& i) { return elem[i]; } 
   std::size_t size() const { return _size; }
 
@@ -76,7 +76,7 @@ int main() {
   // y is that? Cause the variables initialazed are the same (copy by value), but there's a pointer!
   // so the memory locations of v1 and v2 are the same!
 
-  //print(7); // it work by implicit cast from int to const Vector<int> If and only if there's NO "explicit" in line 9!
+  //print(7); // it works by implicit cast from int to const Vector<int> If and only if there's NO "explicit" in line 9!
   // implicit conversion to resolve the parameters to a function works only if ctor is callable with one single parameter
   // and of course there's no "explicit" in ctor definition
   return 0;

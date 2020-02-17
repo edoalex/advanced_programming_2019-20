@@ -29,15 +29,15 @@ int main() {
 
 double square_root(const double d) {
   // test the pre-conditions
-    assert(d >= 0 && d <= 50);  // provided by C, no execeptions
+    assert(d >= 0 && d <= 50);  // provided by C, no exceptions
 
-  //  assert(condition): if cond=T keep on; if cond=F program crushes
-  // what's the pro? if compile with    comp progr.cc -DNDEBUG (that's a compile flag)     assertion won't crush the program
-  // in this way, compiling with or without DNDEBUG, allows you to turn on or turn off the errors catch
+  // assert(condition): if cond=T keep on; if cond=F program crushes (it calls the function abort() )
+  // what's the pro? if compile with    flag -DNDEBUG  assertion won't be activated
+  // in this way, compiling with or without -DNDEBUG, allows you to turn on or turn off the errors catch
   // to sum up: if there are checks in your code that slow down your program while developing, use assert to avoid them
 
   // AP_ASSERT(d>=0 && d<=50) <<  "d should be in the range [0,50]";
 
-  //  AP_ASSERT_IN_RANGE(d,0,50);
+  // AP_ASSERT_IN_RANGE(d,0,50);
   return sqrt(d);
 }

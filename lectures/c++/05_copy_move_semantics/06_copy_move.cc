@@ -50,7 +50,7 @@ class Vector {
   // rvalue: can only be on the right of = (ex a=3; 3 is rvalue)
 
   
-  // move ctor    // in calling, i can distinguish this from copy ctor for rvalue ????                           \\ LOOK HERE!
+  // move ctor    // in calling, i can distinguish this from copy ctor for rvalue
   Vector(Vector&& v) : _size{std::move(v._size)}, elem{std::move(v.elem)} {  // && v     means that v is an rvalue
                                                                              // v is gonna die at the end of the line
     std::cout << "move ctor\n";
@@ -172,8 +172,8 @@ int main() {
   std::cout << "v3 = " << v3;
 
   std::cout << "\nVector<double> v4{v3 + v3}; calls\n";
-  Vector<double> v4{v3 + v3};    // why it calls custom ctor and not copy ctor? cause custom ctor is called
-                                 // by sum operation. But anyway why not copy ctor then? cause sum returns vector already? LOOK HERE
+  Vector<double> v4{v3 + v3};    // why does it call custom ctor and not copy ctor? cause custom ctor is called
+                                 // by sum operation. But anyway why not copy ctor afterwards? cause sum returns vector already?
   // st added later
   std::cout << "\nVector<double> v5{v4}; calls\n";
   Vector<double> v5{v4};

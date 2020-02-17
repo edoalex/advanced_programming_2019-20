@@ -58,12 +58,13 @@ class Vector {
   //   ++_size;
   // }
 
+  // this is for copy
   void push_back(const T& x) {
     check_and_increase_capacity();
     elem[_size] = x;
     ++_size;
   }
-
+  // this is for move
   void push_back(T&& x) {
     check_and_increase_capacity();
     elem[_size] = std::move(x);
@@ -76,6 +77,7 @@ class Vector {
     check_and_increase_capacity();
     elem[_size] = T{std::forward<Types>(args)...};
     ++_size;
+    std::cout << "emp\n";
   }
 };
 
@@ -121,7 +123,7 @@ int main() {
   Date x{1, 2, 3};
   v.push_back(x);  // const T&
 
-  // v.push_back(Date{4,5,6});
+  //v.push_back(Date{4,5,6}); // T&&
 
   v.emplace_back(4, 5, 6);
   v.emplace_back();

@@ -1,0 +1,3 @@
+
+# class_c_interface.cpp c++ source and class_c_interface.h c library
+# __cplusplus is a Macro automatically exported from any c++ compiler

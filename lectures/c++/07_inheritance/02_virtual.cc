@@ -18,6 +18,9 @@ struct Animal {
   }
 
   virtual ~Animal() {}  // why? see file 03_virtual_destructor.cc
+  // Spoiler:
+  // Using run-time polymorphism, to call the proper destructor (and not always and only the destructor of the base class),
+  // the destructor of the base class must be virtual.
 };
 
 struct Dog : public Animal {                       // if I used virtual in the parent, I gotta use override in the child one
@@ -40,7 +43,7 @@ struct Snake : public Animal {
 };
 
 void print_animal(const Animal& a) noexcept {
-  std::cout << "throught ref\n";
+  std::cout << "through ref\n";
   a.info();
   a.speak();
 }
@@ -73,8 +76,8 @@ int main() {
 }
 
 // also an empty class occupies memory: sizeof(emp_class) returns 0
-// but if I add a virtual to a func it's 8.. y?
+// but if I add a virtual to a func it's 8.. why?
 // virtual table: when executing, the compiler executes until that call, a pointer takes it
-// to the virtual table (funcs not enlined) that cointsins the copies of the function for all the derived classes
+// to the virtual table (funcs not enlined) that contains the copies of the function for all the derived classes
 // if interested in hpc, u don't want to call a function that is called many times "virtual"
 // u don't want jumps from the compiler in memory, cause it requires the creation of a pointer (to come back from memory)

@@ -16,17 +16,18 @@ struct Animal {
     std::cout << "age:\t" << age << '\n' << "weight:\t" << weight << '\n';
   }
 };
-// in the following way we say that a dog IS An animal
-// we're saying ìn this way that dog access all the public (not private)  members of the parent
-// in order to use private members I have to  pass through a public interface (but difficult) first
+// In the following way we say that a dog IS An animal
+// we're saying ìn this way that dog access all the public (not private) members of the parent.
+// In order to use private members I have to  pass through a public interface (but difficult) at first.
 // PROTECTED members are like private ones. The only difference is that children can access them!
 // if I use :private   : what was pub , pro or pri, becomes pri
 
 struct Dog : public Animal {                                            // IS A       : public (inheritance)
-  void speak() const noexcept { std::cout << "Bau\n"; }                 // HAS A      obj comp (like previous prog)
+  void speak() const noexcept { std::cout << "Bau\n"; }                 // HAS A      : variables that are references to other objs (like previous prog)
   Dog() noexcept = default;                                             // USE A      : protected, private
-  Dog(const unsigned int a, const double d) : Animal{a, d} {}         // I'm using Animal ctor
-};                                            // for Dog, speak() is redifined from parentn, while info is not
+  Dog(const unsigned int a, const double d) : Animal{a, d} {}           // I'm using Animal ctor
+};
+// for Dog, speak() is redifined from parent, while info is not
 // for Snake, I redefine info() too
 
 struct Snake : public Animal {
@@ -42,7 +43,8 @@ struct Snake : public Animal {
 };
 
 // run-time (dynamic) polymorphism (u can pass a children to a function that accepts a parent)
-// works only for reff and pntr, not values
+// works only for ref and ptr, not values
+// It doesn't work well, because we're not using virtual-override keywords
 void print_animal(const Animal& a) noexcept {
   std::cout << "through ref\n";
   a.info();
@@ -50,6 +52,7 @@ void print_animal(const Animal& a) noexcept {
 }
 
 // compile-time (static) polymorphism
+// You should use this one, if no virtual-override keywords are used.
 template <class T>
 void print_animal_template(const T& a) noexcept {
   std::cout << "through template\n";
@@ -80,7 +83,7 @@ int main() {
     Animal* p = new Snake{1, 2.3, false};
     std::cout << "through pointer\n";
     // a pointer to a base class can point to all the children!
-    // BUT the pointer will work through the functios of the parent (info doesn't tell if it's dangerous)
+    // BUT the pointer will work through the functions of the parent (info doesn't tell if it's dangerous)
     p->info();
     p->speak();
 
@@ -89,6 +92,7 @@ int main() {
     std::cout << std::endl;
 
     print_animal(s);
+    // same issue as before with ptr
 
     std::cout << std::endl;
 

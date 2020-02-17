@@ -38,10 +38,9 @@ double square_root(const double d) {
  
   AP_ERROR(d >= 0 && d <= 50, Square_root_invalid)           // macro(condition, type_of_exception)
       << "In our library the argument must be positive and less or equal than "
-      "50.\n";
+     "50.\n";
 
-  //  AP_ERROR(d >= 0 && d <= 50) << "In our library the argument must be \
-   positive "
+  // AP_ERROR(d >= 0 && d <= 50) << "In our library the argument must be positive "
   //                                "and less or equal than 50.\n";
 
   // AP_ERROR_GE(d, 0) << "Cannot handle negative numbers.\n";
@@ -49,7 +48,7 @@ double square_root(const double d) {
   //   AP_ERROR_LE(d, 50) << "According to the implemented algorithm, the argument "
   //                      "must be less than 50.\n";
 
-  // AP_ERROR_IN_RANGE(d,0,50);
+  //  AP_ERROR_IN_RANGE(d,0,50);
 
   return sqrt(d);
 }

@@ -11,7 +11,10 @@ struct bar : public foo {
 
 int main() {
   bar b;
-  b.f(33);      // it calls bar function! (if 8 line is commented)
+  b.f(33);      // it calls BAR function (if 8 line is commented)
+                // it calls FOO function (if 8 line is UNcommented)
 }
+// the namespace of bar contains for sure bar::f(char) and, only if
+// using foo:f is present, contains foo::f(int) too!
 // message: overloading doesn't work with inheritance
 // try to comment the 8 line and see difference

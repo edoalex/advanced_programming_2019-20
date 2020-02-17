@@ -9,6 +9,9 @@ void dummy() {
   std::cout << t << ": dummy\n";
 }
 
-//templates are fine from this point of view; do not compile templates, keep them in headers
-//so function one definition rule is different!! if not templated you have to use static or --- otherwise you an do what you want.
+// Templates are fine from this point of view;
+// do not compile templates, keep them in headers.
+// So function one definition rule is different!!
+// If not templated you have to use static or inline,
+// otherwise you can do what you want.
 #endif /* _FUNC_H_ */

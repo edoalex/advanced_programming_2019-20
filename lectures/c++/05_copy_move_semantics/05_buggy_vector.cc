@@ -1,7 +1,7 @@
 #include <iostream>
 #include <memory>  // std::unique_ptr
 
-// smart pointers (std::unique_tpr):  implementation of the concept of "ownership"
+// smart pointers (std::unique_ptr):  implementation of the concept of "ownership"
 
 template <typename T>
 class Vector {

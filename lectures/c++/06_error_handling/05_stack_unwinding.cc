@@ -3,7 +3,14 @@
 
 #include "ap_error.h"
 
-// when an error occurs, stack unwinding happens (?)
+// stack unwinding refers to the fact that some memory dinamically and manually
+// allocated may be lost, if an exception is thrown, leading to a workflow path
+// where the memory is not properly freed.
+
+// ex:    int* i=new int[1024]
+//        if(blabla) throw std::runtime_exception("boom");
+//        delete[] i;    // if an exc is throw, this will not be executed!
+
 // allocated memory may not be restored if an error occurs before dtor
 
 class Foo {
@@ -36,7 +43,7 @@ class ManyResources {
   Vector v;
 
  public:
-  ManyResources() : ptr{nullptr}, v{3} {             // if error occurs, ptr is deleted. Who does delete v? line 45
+  ManyResources() : ptr{nullptr}, v{3} {             // if error occurs, ptr is deleted. Who does delete ptr? line 52
     std::cout << "Manyresources" << std::endl;
     try {
       ptr = new double[5];  // new(std::nothrow) double[5] could be better
@@ -79,6 +86,12 @@ int main() {
   delete[] raw_ptr;  // <---
   return 0;
 }
-// when running program ~Foo occurs after the error, because Foo has been created outside the try block
+// When running program ~Foo occurs after the error, because Foo has been created outside the try block
+// therefore it will be automatically destroyed when it goes out of scope.
+// No ManyResources destructor appears, because actually no Manyresources object is ever created
+// you see in terminal MR ctor, but it prints it 'cause z in the workflow, but since an exception is
+// thrown, it is not completed (and no creation occurs).
+// Briefly: the destructor of an object is called if and only if its constructor ended successfully.
+
 // Message: don't use raw points, because u should consider all the paths of the program:
 // use smart pointers! Unique pointers and shared pointers

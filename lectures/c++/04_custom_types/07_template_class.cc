@@ -19,7 +19,7 @@ class Vector {
 
   num& operator[](const std::size_t i) { return elem[i]; }
 
-  // try to comment this line and recompile... the compiler will complain for the const difference 
+  // try to comment this line and recompile... the compiler will complain for the const difference
   const num& operator[](const std::size_t i) const { return elem[i]; }
 };
 

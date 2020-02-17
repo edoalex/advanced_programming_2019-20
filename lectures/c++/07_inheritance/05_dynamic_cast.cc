@@ -63,7 +63,7 @@ void print_animal(const Animal& a) noexcept {
   a.speak();
 
   // dynamic_cast is used to know the real type of the object
-  if (dynamic_cast<const DangerousSnake*>(&a))       // if the cast succeed the things is done. It succeed only if the cast is correct
+  if (dynamic_cast<const DangerousSnake*>(&a))       // if the cast succeed the thing is done. It succeeds only if the cast is correct
     std::cout << "call 911...\n";  
 }
 

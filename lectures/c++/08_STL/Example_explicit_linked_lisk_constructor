@@ -1,0 +1,16 @@
+Example_explicit_linked_lisk_constructor
+List L1:{
+head: pointer_node1
+node1: {value1, pointer_node2}
+node2: {value2, pointer_node3}
+node3: {value3, nullptr}
+}
+
+call of List L2 = List(L1)
+call of make_unique<node>(L1.head);
+List L2:{
+head of L2: pointer_node1
+node1: {value1, pointer_node2} and call again node(pointer_node2)
+node2: {value2, pointer_node3} and call node(pointer_node3)
+node3: {value3, nullptr} and it stops because pointer_node3->pointer==nullptr	
+}

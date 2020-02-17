@@ -28,7 +28,7 @@ int main() {
 
   // only difference between result printing X or Y:
   // the assigned value to the double for X is:    random if X x1;    0 if X x2{}; because it calls default ctor (compiler gen.)
-  // the assigned value to the double for Y is:    random both if    Y y1;   or   Y y2{};  because it calls default ctor (written by me)
+  // the assigned value to the double for Y is:    random both if    Y y1;   or   Y y2{};  because it calls custom ctor (written by me)
   
   // Y y3{y2}; // error: call to a deleted function
 

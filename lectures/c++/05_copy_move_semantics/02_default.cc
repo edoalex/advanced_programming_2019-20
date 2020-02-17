@@ -28,8 +28,7 @@ int main() {
 
 // with S s1;   values are randomly inizialized
 // with S s1{}; values are inizialized to a default behaviour
-// in every cases, if the type is not built-in, but custom type, it has a default value of initialization
+// in every case, if the type is not built-in, but custom type, it has a default value of initialization
 // even with   S s1;
 // default value of int and double: 0
 // default value of std::string: ""
-// def. and rand. value of char: ' '?

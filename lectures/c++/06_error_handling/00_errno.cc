@@ -17,6 +17,6 @@ int main() {
   d = std::sqrt(4);
   std::cout << d << " " << errno << std::endl;
   
-  // who does change the value of errno? the function std::sqrt in this case
+  // who does change the value of errno? the function that trows an error,  std::sqrt in this case
   return 0;
 }

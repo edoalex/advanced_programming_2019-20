@@ -53,7 +53,7 @@ class NonDangerousSnake : public Snake {
  public:
   NonDangerousSnake(const unsigned int a, const double w)
       : Snake{a, w, false} {}
-  NonDangerousSnake() : Snake{false} {}
+   NonDangerousSnake() : Snake{false} {}
 };
 
 struct Python : public NonDangerousSnake {};
